@@ -1,8 +1,9 @@
-require 'singleton'
 class Configatron::KernelStore
-  include ::Singleton
-
   attr_reader :store
+
+  def self.instance
+    @instance ||= self.new
+  end
 
   def initialize
     @store = ::Configatron::Store.new
