@@ -1,3 +1,5 @@
+# This is the root configatron object, and contains methods which
+# operate on the entire configatron hierarchy.
 class Configatron::KernelStore
   attr_reader :store
 
@@ -6,13 +8,16 @@ class Configatron::KernelStore
   end
 
   def initialize
-    @store = ::Configatron::Store.new
+    reset!
   end
 
   def method_missing(name, *args, &block)
     store.send(name, *args, &block)
   end
 
+  def reset!
+    @store = ::Configatron::Store.new
+  end
 end
 
 module Kernel
