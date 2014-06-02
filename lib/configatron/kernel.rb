@@ -17,7 +17,7 @@ class Configatron::KernelStore
   end
 
   def reset!
-    @store = ::Configatron::Store.new(self)
+    @store = Configatron::Store.new(self)
   end
 
   def temp(&block)
